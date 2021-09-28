@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api2-deploy
+  labels:
+    app: python-api2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api2
+  template:
+    metadata:
+      labels:
+        app: python-api2
+    spec:
+      containers:
+      - name: api2-container
+        image: myregistry.images.io:30000/python-api2:0.0
+        ports:
+        - containerPort: 8000
